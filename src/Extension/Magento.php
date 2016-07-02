@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeception\Extension;
+namespace Magento\Codeception\Extension;
 
 use Codeception\Events;
 use Codeception\Extension;

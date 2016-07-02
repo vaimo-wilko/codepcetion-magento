@@ -19,8 +19,7 @@
     "require-dev": {},
     "autoload": {
         "psr-4": {
-            "Codeception\\Extension\\Magento\\": "src\\Extension",
-            "Helper\\Magento\\": "src\\Helper"
+            "Magento\\Codeception": "src"
         }
     }
 }

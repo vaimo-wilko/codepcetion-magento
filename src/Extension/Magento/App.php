@@ -1,6 +1,6 @@
 <?php
 
-namespace Codeception\Extension\Magento;
+namespace Magento\Codeception\Extension\Magento;
 
 use \Mage;
 
