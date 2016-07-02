@@ -46,7 +46,7 @@ class Mocker
 
     public function removeModelMock($name)
     {
-        $this->removeSingleton($name);
+        $this->removeSingletonMock($name);
         $registryKey = self::MODEL_REGISTER_KEY . $name;
         return $this->unregisterMock($registryKey);
     }
