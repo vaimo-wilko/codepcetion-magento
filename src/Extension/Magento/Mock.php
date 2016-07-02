@@ -51,13 +51,13 @@ class Mock
         return $this->unregisterMock($registryKey);
     }
 
-    public function removeSingleton($name)
+    public function removeSingletonMock($name)
     {
         $registryKey = self::SINGLETON_REGISTER_KEY . $name;
         return $this->unregisterMock($registryKey);
     }
 
-    public function removeHelper($name)
+    public function removeHelperMock($name)
     {
         $registryKey = self::HELPER_REGISTER_KEY . $name;
         return $this->unregisterMock($registryKey);

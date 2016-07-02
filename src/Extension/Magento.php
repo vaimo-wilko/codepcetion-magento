@@ -14,11 +14,11 @@ class Magento extends Extension
 
     public function beforeSuite()
     {
-    	\Codeception\Module\Magento\App::init($this->config);
+    	\Codeception\Extension\Magento\App::init($this->config);
     }
 
     public function afterSuite()
     {
-    	\Codeception\Module\Magento\App::reset();
+    	\Codeception\Extension\Magento\App::reset();
     }
 }
