@@ -6,9 +6,13 @@ use \Mage;
 
 class App
 {
+    const MAGENTO_FILE = 'app/Mage.php';
+    const CONFIG_MAGENTO_DIR = 'magento-dir';
+    const CONFIG_MAGENTO_DIR_VALUE = 'src';
+
     private static $_instance;
     protected $_config = array(
-        'folder' => 'src',
+        self::CONFIG_MAGENTO_DIR => self::CONFIG_MAGENTO_DIR_VALUE,
     );
 
     public static function init(array $config = array())
@@ -25,28 +29,27 @@ class App
     {
         $this->_config = array_merge($this->_config, $config);
 
-        if ($file = $this->getBaseDir('app/Mage.php')) {
-            Mage::app(null, 'website', array('config_model' => 'Magento\Codeception\Extension\Magento\Config'));
-            Mage::getSingleton("core/session", array("name" => "frontend"));
-            Mage::app()->setCurrentStore(\Mage_Core_Model_App::DISTRO_STORE_ID);
-            Mage::app()->loadArea(\Mage_Core_Model_App_Area::AREA_FRONTEND);
-        };
+        $this->loadMagentoFile();
 
-        return false;
+        Mage::app(null, 'website', array('config_model' => 'Magento\Codeception\Extension\Magento\Config'));
+        Mage::getSingleton("core/session", array("name" => "frontend"));
+        Mage::app()->setCurrentStore(\Mage_Core_Model_App::DISTRO_STORE_ID);
+        Mage::app()->loadArea(\Mage_Core_Model_App_Area::AREA_FRONTEND);
+
+        return $this;
     }
 
-    protected function getBaseDir($file = null)
+    protected function loadMagentoFile()
     {
         $baseDir = getcwd();
-        $mageDir = $this->_config['folder'];
+        $mageDir = $this->_config[self::CONFIG_MAGENTO_DIR];
+        $file = self::MAGENTO_FILE;
+        
         $file = "{$baseDir}/{$mageDir}/{$file}";
 
-        if (file_exists($file)) {
-            require_once $file;
-            return $this;
-        }
-
-        return false;
+        require_once $file;
+        
+        return $this;
     }
 
     public function reset()
