@@ -3,39 +3,56 @@ namespace Magento\Codeception\Helper;
 
 class Magento extends \Codeception\Module
 {
+    protected $mocker;
+
     public function replaceModelByMock($name, $mock)
     {
-        $mocker = new \Magento\Codeception\Extension\Magento\Mock();
-        $mocker->replaceModelByMock($name, $mock);
+        $this->getMocker()->replaceModelByMock($name, $mock);
+
+        return $this;
     }
 
     public function replaceHelperByMock($name, $mock)
     {
-        $mocker = new \Magento\Codeception\Extension\Magento\Mock();
-        $mocker->replaceHelperByMock($name, $mock);
+        $this->getMocker()->replaceHelperByMock($name, $mock);
+
+        return $this;
     }
 
     public function replaceSingletonByMock($name, $mock)
     {
-        $mocker = new \Magento\Codeception\Extension\Magento\Mock();
-        $mocker->replaceSingletonByMock($name, $mock);
+        $this->getMocker()->replaceSingletonByMock($name, $mock);
+
+        return $this;
     }
 
     public function removeModelMock($name)
     {
-        $mocker = new \Magento\Codeception\Extension\Magento\Mock();
-        $mocker->removeModelMock($name);
+        $this->getMocker()->removeModelMock($name);
+
+        return $this;
     }
 
     public function removeSingletonMock($name)
     {
-        $mocker = new \Magento\Codeception\Extension\Magento\Mock();
-        $mocker->removeSingleton($name);
+        $this->getMocker()->removeSingletonMock($name);
+
+        return $this;
     }
 
     public function removeHelperMock($name)
     {
-        $mocker = new \Magento\Codeception\Extension\Magento\Mock();
-        $mocker->removeHelper($name);
+        $this->getMocker()->removeHelperMock($name);
+
+        return $this;
+    }
+
+    protected function getMocker()
+    {
+        if (!$this->mocker) {
+            $this->mocker = new \Magento\Codeception\Extension\Magento\Mocker;
+        }
+
+        return $this->mocker;
     }
 }

@@ -26,7 +26,7 @@ class App
         $this->_config = array_merge($this->_config, $config);
 
         if ($file = $this->getBaseDir('app/Mage.php')) {
-            Mage::app(null, 'website', array('config_model' => 'Codeception\Module\Magento\Config'));
+            Mage::app(null, 'website', array('config_model' => 'Magento\Codeception\Extension\Magento\Config'));
             Mage::getSingleton("core/session", array("name" => "frontend"));
             Mage::app()->setCurrentStore(\Mage_Core_Model_App::DISTRO_STORE_ID);
             Mage::app()->loadArea(\Mage_Core_Model_App_Area::AREA_FRONTEND);

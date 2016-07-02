@@ -4,7 +4,7 @@ namespace Magento\Codeception\Extension\Magento;
 
 use \Mage;
 
-class Mock
+class Mocker
 {
     const HELPER = 'helper';
     const HELPER_REGISTER_KEY = '_helper/';

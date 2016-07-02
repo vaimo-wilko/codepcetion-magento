@@ -2,7 +2,7 @@
 namespace Magento\Codeception\Extension\Magento;
 
 use \Mage;
-use Codeception\Extension\Magento\Mock;
+use Magento\Codeception\Extension\Magento\Mocker;
 
 class Config extends \Mage_Core_Model_Config
 {
@@ -24,7 +24,7 @@ class Config extends \Mage_Core_Model_Config
 
 	protected function getModelMock($modelClass)
 	{
-		$registryKey = Mock::MODEL_REGISTER_KEY . $modelClass;
+		$registryKey = Mocker::MODEL_REGISTER_KEY . $modelClass;
 		return Mage::registry($registryKey);
 	}
 }
