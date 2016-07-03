@@ -8,17 +8,11 @@ use Codeception\Extension;
 class Magento extends Extension
 {
 	public static $events = [
-        Events::SUITE_BEFORE    => 'beforeSuite',
-        Events::SUITE_AFTER     => 'afterSuite',
+        Events::SUITE_BEFORE    => 'beforeSuite'
     ];
 
     public function beforeSuite()
     {
     	\Magento\Codeception\Extension\Magento\App::init($this->config);
-    }
-
-    public function afterSuite()
-    {
-    	\Magento\Codeception\Extension\Magento\App::reset();
     }
 }
