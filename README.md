@@ -18,9 +18,7 @@ Config
         enabled:
             - Codeception\Extension\RunFailed
             - Magento\Codeception\Extension\Magento
-        config:
-            Magento\Codeception\Extension\Magento:
-                magento-dir: 'src'
+                  magento-dir: 'src'
 
 **unit.suite.yml**
 
